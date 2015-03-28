@@ -1,0 +1,9 @@
+* text=auto
+*.cs text
+*.txt text
+*.config text
+*.sln text eol=crlf
+*.csproj text eol=crlf
+*.exe binary
+*.dll binary
+*.ico binary
