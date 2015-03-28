@@ -1,0 +1,88 @@
+html, body {			
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;			
+	font-family: PT Sans;
+}
+#background {
+	background-image: url("./images/back.jpg");
+	background-size:cover;
+	background-repeat:no-repeat;
+	position: fixed;
+	top: 0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+}
+#page {			
+	max-width: 550px;		
+	margin: 0 auto;			
+	padding: 2em;
+}		
+#melodyTextarea {
+	display: block;			
+	width: 95%;
+	min-height: 200px;			
+	resize: vertical;
+	background-color: #ddd6ba;
+	border-color: #d2cbb1;
+	border-width: 0;
+	box-shadow: -1px 9px 41px -2px rgba(0,0,0,0.75);
+	overflow: auto;
+	margin: 0 auto;
+}
+#submitButton {
+	display: block;
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 0.5em;
+	
+}
+#generatedMelody {
+	width: 100%;
+	margin: 3em auto 3em auto;
+	background-color: #ddd6ba;
+	border-color: #d2cbb1;
+	box-shadow: -1px 9px 41px -2px rgba(0,0,0,0.75);
+	padding-top: 1em;
+	padding-bottom: 1em;
+    display: none;
+    position: relative;
+}
+#generatedMelody p {
+	margin: 0 1em;
+}
+#player {
+	display: block;
+	max-width: 300px;
+	margin: 0 auto;
+}
+.highlight {
+	background-color:  #ddd6ba;
+}
+em {
+	font-size: 14pt;
+}
+#examples {
+	width: 100%;
+	background-color: #ddd6ba;
+	border-color: #d2cbb1;
+	box-shadow: -1px 9px 41px -2px rgba(0,0,0,0.75);
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+#examples p, ul {
+	margin: 0 1em;
+	line-height: 1.5;
+}
+.warning {
+	text-align: center;
+}
+.exampleLink {
+    text-decoration: none;
+    border-bottom: 1px dashed; 
+}
+ul#samples {
+      list-style-image: url('./images/music-note.png');
+}

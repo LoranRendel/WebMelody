@@ -1,0 +1,16 @@
+﻿@model GenerationError
+@switch (Model)
+{
+    case GenerationError.IncorrectNotation:
+        <p>Генерация мелодии невозможна из-за ошибки в записи.</p>
+        break;
+    case GenerationError.TooLong:
+        <p>Генерация мелодии невозможна, так как она слишком длинная.</p>
+        break;
+    case GenerationError.Empty:
+        <p>Генерация невозможна, так как вы не ввели текст мелодии.</p>
+        break;
+    default:
+        <p>Во время генерации мелодии произошла ошибка.</p>
+        break;
+}
