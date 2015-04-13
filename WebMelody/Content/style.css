@@ -35,6 +35,7 @@ html, body {
 #submitButton {
 	display: block;
 	width: 100%;
+    height: 3em;
 	margin: 0 auto;
 	margin-top: 0.5em;
 	
@@ -85,4 +86,24 @@ em {
 }
 ul#samples {
       list-style-image: url('./images/music-note.png');
+}
+
+@media (max-width: 960px) and (orientation: portrait) {
+	#page {
+        max-width: 95%; 
+        padding: 0.5em 0;       
+	}
+    #submitButton {
+        height: 3.5em;
+        font-size: 2em;
+    }
+    #examples {
+        font-size: 1.5em;
+    }
+    #close {
+        height: 3em;        
+    }
+    #submitButton {
+        margin-top: 1em;
+    }
 }

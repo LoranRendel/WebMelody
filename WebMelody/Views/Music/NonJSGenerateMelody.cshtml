@@ -17,10 +17,10 @@
     {
         InsertionMode = InsertionMode.Replace,
         HttpMethod = "POST",
-        OnFailure = "generationFailed",
-        OnSuccess = "generated",
+        OnFailure = "AJAXEvents.Failure",
+        OnSuccess = "AJAXEvents.Success",
         UpdateTargetId = "generatedMelody",
-        OnBegin = "loadingIndicator"
+        OnBegin = "AJAXEvents.Begin"   
     }, new { id = "melodyForm" }))
 {
     <p class="warning"><em><span class="highlight">Продолжительность мелодии не должна превышать 2 минут.</span></em></p>
