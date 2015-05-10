@@ -1,17 +1,36 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@model IEnumerable<Piece>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";    
 }
+@section Examples {
+<div id="examplesJS">
+    <p>Репертуар:</p>
+    <ul id="samples">
+        @foreach(var piece in this.Model)
+        {
+            <li><a class="exampleLink" href="#" data-melody="@piece.Text">@piece.Title</a></li>
+        }        
+    </ul>
+    <p><a id="rulesLink" href="~/Music/Rules">Правила синтаксиса нотной записи</a>.</p>
+    @Html.Partial("~/Views/Shared/Rules.cshtml")    
+</div>
 <div id="examples">
     <p>Примеры мелодий:</p>
     <ul id="samples">
-        <li><a class="exampleLink" href="#" data-melody="temp150 eb5-8^3 a[ab5-8 eb5-8 cb6-8 eb5-8] a a bb5-8 eb5-8 ab5-8 eb5-8 ab5-8 eb5-8^4 cb5-8^4 ab4-8^4 d4-8^4 eb4-8^4 bb5-8^3 b[bb5-8 fb5-8 db6-8 fb5-8] b b cb6-8 fb5-8 bb5-8 fb5-8 db6-8 bb5-8^4 g5-8^3 g5-8 fb5-8^5 eb5-8 db5-8 bb4-8 cb5-8^4 eb5-8^3 c[eb5-8 cb5-8 ab5-8 cb5-8] c gb5-8 db5-8 fb5-8 db5-8 eb5-8 ab4-8 db5-8  ab4-8 d[db5-8 bb4-8 gb5-8 bb4-8] d fb5-8 cb5-8 eb5-8 cb5-8 db5-8 gb4-8 cb5-8 gb4-8 cb5-8 ab4-8 db5-8 ab4-8 bb4-8 ab4-8 cb5-8 ab4-8 gb5-8 db5-8 fb5-8 db5-8 eb5-8 ab4-8 db5-8 ab4-8 e[eb5-8 gb4-8 cb5-8 gb4-8] e f[db5-8 gb4-8 bb4-8 gb4-8] f eb5-8 ab4-8 ab5-8 eb5-8 a5-8 eb5-8 ab5-8 eb5-8 gb5-8 db5-8 fb5-8 db5-8 eb5-8 ab4-8 db5-8 ab4-8 db5-8 bb4-8 fb5-8 bb4-8 ab5-8 bb4-8 gb5-8 bb4-8 fb5-8 cb5-8 eb5-8 cb5-8 db5-8 gb4-8 cb5-8 gb4-8 cb5-8 ab4-8 db5-8 ab4-8 bb4-8 ab4-8 cb5-8 ab4-8 gb5-8 db5-8 fb5-8 db5-8 eb5-8 ab4-8 db5-8 ab4-8 g[eb5-8 gb4-8 cb5-8 gb4-8] g h[db5-8 gb4-8 bb4-8 gb4-8] h i[cb5-8 cb4-8 gb4-8 cb4-8] i bb4-8 bb3-8 g4-8 bb3-8 bb4-8">Schubert D.946 N. 2</a></li>
-        <li><a class="exampleLink" href="#" data-melody="TEMP120 C4-16 D4-16 E4-8 E4-8 E4-8 E4-8 C5-8. E4-16 E4-8 E4-8 E4-16 F4-16 D4-8X5 P-8 B3-16 C4-16 D4-8 D4-8 D4-8 D4-8 F4-4T F4-4T E4-8T D4-8T C4-2. P-8 F4-16 G4-16 A4-8 A4-8 A4-8 A4-8 G4-4T F4-4T E4-8T D4-8T F4-8 E4-8X5 P-8  F4-16 G4-16 A4-8 A4-8 A4-8 A4-8 A4-4T A4-4T G#4-8T A4-8T B4-2. P-8 E4-8 C5-8 C5-8 C5-8 C5-8 C5-4 B4-8 B4-8 D5-8 D5-8 C5-8 B4-8 B4-8. C5-16 A4-8 A4-8 A4-8 A4-8 A4-8 A4-8 G4-8. C5-16 E5-8 E5-8 D5-4. E5-16 F5-16 E5-4 P-8 E4-8 C5-8 C5-8 C5-8 C5-8 C5-4 B4-8 B4-8 D5-8 D5-8 C5-8 B4-8 B4-8. C5-16 A4-8 A4-8 A4-8 A4-8 G4-8 F4-8 E4-16 A4-16 C5-4 E4-8 E4-8 G#4-8 B4-8 G#4-8 A4-2.">Прекрасное далёко</a></li>
-        <li><a class="exampleLink" href="#" data-melody="TEMP120 b4-16 a4-16 g#4-16 a4-16 c5-8 p-8 d5-16 c5-16 b4-16 c5-16 e5-8 p-8 f5-16 e5-16 d#5-16 e5-16 b5-16 a5-16 g#5-16 a5-16 b5-16 a5-16 g#5-16 a5-16 c6-4 a5-8 c6-8 g5-64 a5-64 b5-16 a5-8 g5-8 a5-8 g5-64 a5-64 b5-16 a5-8 g5-8 a5-8 g5-64 a5-64 b5-16 a5-8 g5-8 f#5-8 e5-4        b4-16 a4-16 g#4-16 a4-16 c5-8 p-8 d5-16 c5-16 b4-16 c5-16 e5-8 p-8 f5-16 e5-16 d#5-16 e5-16 b5-16 a5-16 g#5-16 a5-16 b5-16 a5-16 g#5-16 a5-16 c6-4 a5-8 c6-8 g5-64 a5-64 b5-16 a5-8 g5-8 a5-8 g5-64 a5-64 b5-16 a5-8 g5-8 a5-8 g5-64 a5-64 b5-16 a5-8 g5-8 f#5-8 e5-4        e5-8 f5-8 g5-8 g5-8 a5-16 g5-16 f5-16 e5-16 d5-4 e5-8 f5-8 g5-8 g5-8 a5-16 g5-16 f5-16 e5-16 d5-4 c5-8 d5-8 e5-8 e5-8 f5-16 e5-16 d5-16 c5-16 b4-4 c5-8 d5-8 e5-8 e5-8 f5-16 e5-16 d5-16 c5-16 b4-4 b4-16 a4-16 g#4-16 a4-16 c5-8 p-8 d5-16 c5-16 b4-16 c5-16 e5-8 p-8 f5-16 e5-16 d#5-16 e5-16 b5-16 a5-16 g#5-16 a5-16 b5-16 a5-16 g#5-16 a5-16 c6-4 a5-8 b5-8 c6-8 b5-8 a5-8 g#5-8 a5-8 e5-8 f5-8 d5-8 c5-4 b4-8 a4-32 b4-32 a4-4     e5-8 f5-8 g5-8 g5-8 a5-16 g5-16 f5-16 e5-16 d5-4 e5-8 f5-8 g5-8 g5-8 a5-16 g5-16 f5-16 e5-16 d5-4 c5-8 d5-8 e5-8 e5-8 f5-16 e5-16 d5-16 c5-16 b4-4 c5-8 d5-8 e5-8 e5-8 f5-16 e5-16 d5-16 c5-16 b4-4 b4-16 a4-16 g#4-16 a4-16 c5-8 p-8 d5-16 c5-16 b4-16 c5-16 e5-8 p-8 f5-16 e5-16 d#5-16 e5-16 b5-16 a5-16 g#5-16 a5-16 b5-16 a5-16 g#5-16 a5-16 c6-4 a5-8 b5-8 c6-8 b5-8 a5-8 g#5-8 a5-8 e5-8 f5-8 d5-8 c5-4 b4-8 a4-32 b4-32 a4-4      a5-8 b5-8 c#6-4 a5-8 b5-8 c#6-8 b5-8 a5-8 g#5-8 f#5-8 g#5-8 a5-8 b5-8 g#5-8 e5-8 a5-8 b5-8 c#6-4 a5-8 b5-8 c#6-8 b5-8 a5-8 g#5-8 f#5-8 b5-8 g#5-8 e5-8 a5-4       a5-8 b5-8 c#6-4 a5-8 b5-8 c#6-8 b5-8 a5-8 g#5-8 f#5-8 g#5-8 a5-8 b5-8 g#5-8 e5-8 a5-8 b5-8 c#6-4 a5-8 b5-8 c#6-8 b5-8 a5-8 g#5-8 f#5-8 b5-8 g#5-8 e5-8 a5-4 c#6-16 d6-16 c#6-16 b5-16    a5-16 b5-16 a5-16 g#5-16     f#5-16 a5-16 g#5-16 f#5-16    f5-16 f#5-16 g#5-16 f5-16    c#5-16 d#5-16 f5-16 c#5-16   f#5-16 f5-16 f#5-16 g#5-16    a5-16 g#5-16 a5-16 b5-16   c#6-16 c6-16 c#6-16 c6-16  c#6-16 d6-16 c#6-16 b5-16    a5-16 b5-16 a5-16 g#5-16   f#5-16 a5-16 g#5-16 f#5-16    e5-16 f#5-16 g#5-16 e5-16   c#5-16 d#5-16 e5-16 c#5-16   d#5-16 e5-16 f#5-16 d#5-16   c5-16 c#5-16 d#5-16 c5-16    c#5-4     c#6-16 d6-16 c#6-16 b5-16    a5-16 b5-16 a5-16 g#5-16     f#5-16 a5-16 g#5-16 f#5-16    f5-16 f#5-16 g#5-16 f5-16    c#5-16 d#5-16 f5-16 c#5-16   f#5-16 f5-16 f#5-16 g#5-16    a5-16 g#5-16 a5-16 b5-16   c#6-16 c6-16 c#6-16 c6-16  c#6-16 d6-16 c#6-16 b5-16    a5-16 b5-16 a5-16 g#5-16   f#5-16 a5-16 g#5-16 f#5-16    e5-16 f#5-16 g#5-16 e5-16   c#5-16 d#5-16 e5-16 c#5-16   d#5-16 e5-16 f#5-16 d#5-16   c5-16 c#5-16 d#5-16 c5-16    c#5-4 e5-16 d5-16 c#5-16 b4-16 a4-16 b4-16 c#5-16 d5-16 e5-16 f#5-16 g#5-16 a5-16 a5-16 g#5-16 f#5-16 e5-16 e5-16 d5-16 c#5-16 b4-16 a4-16 b4-16 c#5-16 d5-16 e5-16 f#5-16 g#5-16 a5-16 a#5-8 b5-8 e5-16 d5-16 c#5-16 b4-16 a4-16 b4-16 c#5-16 d5-16 e5-16 f#5-16 g#5-16 a5-16 a5-16 g#5-16 f#5-16 e5-16 e5-16 d5-16 c#5-16 b4-16 c#5-16 e5-16 a4-16 c#5-16 b4-16 d5-16 g#4-16 b4-16 a4-4 c#6-16 d6-16 c#6-16 b5-16     a5-16 b5-16 a5-16 g#5-16    f#5-16 a5-16 g#5-16 f#5-16   f5-16 f#5-16  g#5-16 f5-16      c#5-16 d#5-16 f5-16 c#5-16   f#5-16 f5-16 f#5-16 g#5-16     a5-16 g#5-16 a5-16 b5-16    c#6-16 c6-16 c#6-16 c6-16 c#6-16 c6-16 c#6-16 a#5-16    d6-16 c#6-16 d6-16 c#6-16 d6-16 c#6-16 d6-16 c#6-16   d6-16 c#6-16 b5-16 a5-16    g#5-16 a5-16 b5-16 g#5-16     a5-16 b5-16 c#6-16 f#5-16   f5-16 f#5-16 g#5-16 f5-16   f#5-4     e5-16 d5-16 c#5-16 b4-16 a4-16 b4-16 c#5-16 d5-16 e5-16 f#5-16 g#5-16 a5-16 a5-16 g#5-16 f#5-16 e5-16 e5-16 d5-16 c#5-16 b4-16 a4-16 b4-16 c#5-16 d5-16 e5-16 f#5-16 g#5-16 a5-16 a#5-8 b5-8 e5-16 d5-16 c#5-16 b4-16 a4-16 b4-16 c#5-16 d5-16 e5-16 f#5-16 g#5-16 a5-16 a5-16 g#5-16 f#5-16 e5-16 e5-16 d5-16 c#5-16 b4-16 c#5-16 e5-16 a4-16 c#5-16 b4-16 d5-16 g#4-16 b4-16 a4-4 c#6-16 d6-16 c#6-16 b5-16     a5-16 b5-16 a5-16 g#5-16    f#5-16 a5-16 g#5-16 f#5-16   f5-16 f#5-16  g#5-16 f5-16      c#5-16 d#5-16 f5-16 c#5-16   f#5-16 f5-16 f#5-16 g#5-16     a5-16 g#5-16 a5-16 b5-16    c#6-16 c6-16 c#6-16 c6-16 c#6-16 c6-16 c#6-16 a#5-16    d6-16 c#6-16 d6-16 c#6-16 d6-16 c#6-16 d6-16 c#6-16   d6-16 c#6-16 b5-16 a5-16    g#5-16 a5-16 b5-16 g#5-16     a5-16 b5-16 c#6-16 f#5-16   f5-16 f#5-16 g#5-16 f5-16   f#5-4">Alla turca</a></li>
-        <li><a class="exampleLink" href="#" data-melody="TEMP130 A3-16 A3-16 D4-8 D4-16 A4-8 A4-16 D4-8x3 P-8 D4-16 D4-16 D4-8 D4-8 E4-16 F4-8. F4-8 E4-8 P-8 A3-16 A3-16 D4-8 D4-8 A4-8 A4-16 F4-8x3 P-8 D4-16 D4-16 D4-8 D4-8 E4-8 F4-8 F4-8 E4-8 D4-8 E4-8 F4-8 F4-16 G4-8 G4-16 F4-8x3 P-8 F4-16 F4-16 F4-8 F4-8 F4-16 G4-8. F4-8 E4-8 D4-16 E4-8. F4-8 F4-8 E4-16 E4-8 D4-16x5 P-8 D4-16 D4-16 D4-8 D4-8 D4-8 E4-8 D4-8 C#4-8 B3-8 C#4-8 D4-2 P-2                 A4-8 G4-8 F4-8 E4-8 D4-8T E4-8T F4-8T D4-8T E4-8T F4-8T BB3-4. BB3-8 A3-8 A3-8 C#4-8 E4-8 A4-8 G4-8 F4-8 E4-8 D4-8T E4-8T F4-8T D4-8T E4-8T F4-8T C4-4 P-8 C4-8 C#4-8 C#4-8 D4-8 E4-8 P-8 A4-16 A4-16 A4-8 A4-8 C5-8T BB4-8T A4-8T G4-8T F4-8T E4-8T G4-4 P-4 G4-8 A4-16 G4-16 F4-8 E4-8 F4-4 P-4 D4-8T D4-8T D4-8T D4-8T E4-8T F4-8T F4-8 E4-4. P-4 P-8 A3-16 A3-16 D4-8 D4-16 A4-8 A4-16 D4-8x3 P-8 D4-16 D4-16 D4-8 D4-8 E4-16 F4-8. F4-8 E4-8 P-8 A3-16 A3-16 D4-8 D4-8 A4-8 A4-16 F4-8x3 P-8 D4-16 D4-16 D4-8 D4-8 E4-8 F4-8 F4-8 E4-8 D4-8 E4-8 F4-8 F4-16 G4-8 G4-16 F4-8x3 P-8 F4-16 F4-16 F4-8 F4-8 F4-16 G4-8. F4-8 E4-8 D4-16 E4-8. F4-8 F4-8 E4-16 E4-8 D4-16x5 P-8 D4-16 D4-16 D4-8 D4-8 D4-8 E4-8 D4-8 C#4-8 B3-8 C#4-8 D4-2 P-2 A4-8 G4-8 F4-8 E4-8 D4-8T E4-8T F4-8T D4-8T E4-8T F4-8T BB3-4. BB3-8 A3-8 A3-8 C#4-8 E4-8 A4-8 G4-8 F4-8 E4-8 D4-8T E4-8T F4-8T D4-8T E4-8T F4-8T C4-4 P-8 C4-8 C#4-8 C#4-8 D4-8 E4-8 P-8 A4-16 A4-16 A4-8 A4-8 C5-8T BB4-8T A4-8T G4-8T F4-8T E4-8T G4-4 P-4 G4-8 A4-16 G4-16 F4-8 E4-8 F4-4 P-4 D4-8T D4-8T D4-8T D4-8T E4-8T F4-8T F4-8 E4-4. P-4 P-8 A3-16 A3-16 D4-8 D4-16 A4-8 A4-16 D4-8x3 P-8 D4-16 D4-16 D4-8 D4-8 E4-16 F4-8. F4-8 E4-8 P-8 A3-16 A3-16 D4-8 D4-8 A4-8 A4-16 F4-8x3 P-8 D4-16 D4-16 D4-8 D4-8 E4-8 F4-8 F4-8 E4-8 D4-8 E4-8 F4-8 F4-16 G4-8 G4-16 F4-8x3 P-8 F4-16 F4-16 F4-8 F4-8 F4-16 G4-8. F4-8 E4-8 D4-16 E4-8. F4-8 F4-8 E4-16 E4-8 D4-16x5 P-8 D4-16 D4-16 D4-8 D4-8 D4-8 E4-8 D4-8 C#4-8 B3-8 C#4-8 D4-2 P-2 P-2">Позови меня с собой</a></li>        
-        <li><a class="exampleLink" href="#" data-melody="TEMP220 EB5-8 D5-8 D5-4 EB5-8 D5-8 D5-4 EB5-8 d5-8 d5-4 bb5-4 P-4 BB5-8 A5-8 G5-4 G5-8 F5-8 EB5-4 EB5-8 D5-8 C5-4 C5-4 P-4 D5-8 C5-8 C5-4 D5-8 C5-8 C5-4 D5-8 C5-8 C5-4 A5-4 P-4 A5-8 G5-8 F#5-4 F#5-8 EB5-8 D5-4 D5-8 C5-8 BB4-4 BB4-4 P-4 BB5-8 A5-8 A5-4 C6-4 F#5-4 A5-4 G5-4 D5-4 P-4 BB5-8 A5-8 A5-4 C6-4 F#5-4 A5-4 G5-4 BB5-4 A5-8 G5-8 F5-8 EB5-8 D5-1 C#5-1 D5-2">Моцарт — Симфония № 40 (отрывок)</a></li>
+        @foreach (var piece in Model)
+        {
+            <li>
+                <form action="~/Music/GenerateMelody" method="post">
+                    <input type="hidden" name="melody" value="@piece.Text" />
+                    <input type="hidden" name="jsEnabled" id="jsEnabled" value="false" />
+                    <input class="link-button" type="submit" value="@piece.Title" />
+                </form>
+            </li>
+        }
     </ul>
-    <p><a href="#">Правила синтаксиса нотной записи.</a></p>
+    <p><a href="~/Music/Rules">Правила синтаксиса нотной записи.</a></p>
 </div>
+}
 
     @using (Ajax.BeginForm("GenerateMelody", "Music", null, new AjaxOptions()
     {
@@ -20,17 +39,19 @@
         OnFailure = "AJAXEvents.Failure",
         OnSuccess = "AJAXEvents.Success",
         UpdateTargetId = "generatedMelody",
-        OnBegin = "AJAXEvents.Begin"    
+        OnBegin = "AJAXEvents.Begin",
+        OnComplete = "AJAXEvents.Complete"   
     }, new { id = "melodyForm" }))
     {
-        <p class="warning"><em><span class="highlight">Продолжительность мелодии не должна превышать 2 минут.</span></em></p>
+        <p class="warning"><em><span class="highlight">Продолжительность мелодии не должна превышать 2 минуты.</span></em></p>
         <textarea id="melodyTextarea" name="melody"></textarea>
         <input type="hidden" name="jsEnabled" id="jsEnabled" value="false" />
-        <input id="submitButton" type="submit" value="Сгенерировать мелодию">
+        <input id="submitButton" type="submit" value="Сыграть">
     }
 <div id="generatedMelody">
-    <p>Ваша мелодия:</p>
-    <audio id="player" controls>       
-        Your browser does not support the audio element.
-    </audio>
+    <img src="~/Content/images/loading.gif" alt="Генерирую" />
 </div>
+@section Scripts {
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/Interface/AJAXEvents.js"></script>
+}

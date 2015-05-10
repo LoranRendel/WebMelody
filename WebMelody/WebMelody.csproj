@@ -43,6 +43,12 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Melody">
       <HintPath>..\..\Melody\Melody\bin\Release\Melody.dll</HintPath>
     </Reference>
@@ -102,19 +108,32 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\tunes.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\images\dot.png" />
+    <Content Include="Content\images\long.png" />
     <Content Include="Content\images\music-note.png" />
     <Content Include="Content\images\back.jpg" />
+    <Content Include="Content\images\note-durations.png" />
+    <Content Include="Content\images\note-names.png" />
+    <Content Include="Content\images\triplet.png" />
     <Content Include="Content\style.css" />
     <Content Include="Global.asax" />
+    <Content Include="connection-strings.config" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\WebDeployToAmazon.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\Interface\AJAXEvents.js" />
+    <None Include="Scripts\jquery-2.1.0-vsdoc.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\jquery-2.1.3.min.map" />
     <Content Include="Views\Music\GenerationError.cshtml" />
     <Content Include="Views\Music\NonJSGenerateMelody.cshtml" />
@@ -127,7 +146,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="MelodyGeneration.cs" />
+    <Compile Include="Models\MelodyDB.cs" />
     <Compile Include="Models\NonJSGenerateMelody.cs" />
+    <Compile Include="Models\Piece.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +157,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Music\Index.cshtml" />
     <Content Include="Views\Music\GenerateMelody.cshtml" />
+    <Content Include="Views\Shared\Rules.cshtml" />
+    <Content Include="Views\Music\RulesPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -143,9 +166,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

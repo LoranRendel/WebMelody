@@ -1,14 +1,12 @@
-html, body {			
-	width: 100%;
-	height: 100%;
+html, body {
 	margin: 0;
 	padding: 0;			
-	font-family: PT Sans;
+	font-family: 'PT Sans', sans-serif;
 }
 #background {
 	background-image: url("./images/back.jpg");
-	background-size:cover;
-	background-repeat:no-repeat;
+	background-size: cover;
+	background-repeat: no-repeat;
 	position: fixed;
 	top: 0;
 	z-index: -1;
@@ -31,14 +29,24 @@ html, body {
 	box-shadow: -1px 9px 41px -2px rgba(0,0,0,0.75);
 	overflow: auto;
 	margin: 0 auto;
+    border-radius: 10px;
+    padding: 10px;
 }
 #submitButton {
 	display: block;
-	width: 100%;
+	width: 60%;
     height: 3em;
 	margin: 0 auto;
-	margin-top: 0.5em;
-	
+	margin-top: 1em;
+    border-radius: 10px;
+    background-color: #ddd6ba;
+    border: none;
+    box-shadow: -1px 9px 41px -2px rgba(0,0,0,0.75);
+    cursor: pointer;
+	border-color: #d2cbb1;
+    font-family: 'PT Sans';
+    text-wrap:normal;
+    white-space:normal;
 }
 #generatedMelody {
 	width: 100%;
@@ -50,9 +58,13 @@ html, body {
 	padding-bottom: 1em;
     display: none;
     position: relative;
+    border-radius: 10px;
 }
 #generatedMelody p {
 	margin: 0 1em;
+}
+#generatedMelody p.indicator {
+    text-align: center;
 }
 #player {
 	display: block;
@@ -61,9 +73,13 @@ html, body {
 }
 .highlight {
 	background-color:  #ddd6ba;
+    border-radius: 5px;
 }
 em {
 	font-size: 14pt;
+}
+.rule-imgs {
+    width: 90%;
 }
 #examples {
 	width: 100%;
@@ -72,6 +88,7 @@ em {
 	box-shadow: -1px 9px 41px -2px rgba(0,0,0,0.75);
 	padding-top: 1em;
 	padding-bottom: 1em;
+    border-radius: 10px;
 }
 #examples p, ul {
 	margin: 0 1em;
@@ -87,7 +104,23 @@ em {
 ul#samples {
       list-style-image: url('./images/music-note.png');
 }
-
+input.link-button {
+    background: none;
+    border: none;
+    padding: 0;
+    text-decoration: underline;
+    cursor: pointer;
+    color: blue;
+}
+input.link-button:focus:active {
+	padding: 0;
+}
+.email {
+    text-align: center;
+}
+#close {
+    border-radius: 10px;    
+}
 @media (max-width: 960px) and (orientation: portrait) {
 	#page {
         max-width: 95%; 
@@ -99,11 +132,22 @@ ul#samples {
     }
     #examples {
         font-size: 1.5em;
-    }
-    #close {
-        height: 3em;        
-    }
+    }    
     #submitButton {
         margin-top: 1em;
     }
+}
+.code {
+    font-family: monospace;
+}
+#rules {
+    padding-left: 1em;
+    padding-right: 1em;  
+}
+#rulesLink {
+      text-decoration: none;
+    border-bottom: 1px dashed; 
+}
+#examplesJS {
+    display:none;
 }

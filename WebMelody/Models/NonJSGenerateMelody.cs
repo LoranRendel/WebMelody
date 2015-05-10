@@ -9,5 +9,6 @@ namespace WebMelody
     {
         public string Melody { get; set; }
         public string DataUrl { get; set; }
+        public IEnumerable<Piece> Examples { get; set; }
     }
 }
