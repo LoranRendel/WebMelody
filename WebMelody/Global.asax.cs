@@ -13,6 +13,8 @@ namespace WebMelody
     {
         protected void Application_Start()
         {
+            CleanHeaders.AddHeader("Server");
+            MvcHandler.DisableMvcResponseHeader = true;
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

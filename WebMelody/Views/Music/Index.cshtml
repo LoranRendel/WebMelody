@@ -8,10 +8,10 @@
     <ul id="samples">
         @foreach(var piece in this.Model)
         {
-            <li><a class="exampleLink" href="#" data-melody="@piece.Text">@piece.Title</a></li>
+            <li><a class="exampleLink jsLink" href="#" data-melody="@piece.Text">@piece.Title</a></li>
         }        
     </ul>
-    <p><a id="rulesLink" href="~/Music/Rules">Правила синтаксиса нотной записи</a>.</p>
+    <p><a id="ruleLink" class="jsLink" href="~/Music/Rules">Правила синтаксиса нотной записи</a></p>
     @Html.Partial("~/Views/Shared/Rules.cshtml")    
 </div>
 <div id="examples">
@@ -28,7 +28,7 @@
             </li>
         }
     </ul>
-    <p><a href="~/Music/Rules">Правила синтаксиса нотной записи.</a></p>
+    <p><a id="ruleLink" href="~/Music/Rules">Правила синтаксиса нотной записи</a></p>
 </div>
 }
 

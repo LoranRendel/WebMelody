@@ -7,7 +7,6 @@ using Melody;
 using WaveGenerator;
 using System.IO;
 using System.Text;
-
 using System.Xml;
 namespace WebMelody
 {
@@ -17,7 +16,6 @@ namespace WebMelody
         static BitDepth Bitness = BitDepth.Bit8;
         static ushort Channels = 1;
         static int LengthLimit = 1000;
-
         public static string Generate(string melody)
         {
             MemoryStream fileStream = new MemoryStream();
@@ -37,13 +35,13 @@ namespace WebMelody
                 ex.Data.Add("Error", GenerationError.IncorrectNotation);
                 throw ex;
             }
-            //Generation          
-            foreach(var note in song.Notes)           
+            //Generation
+            foreach(var note in song.Notes)
                 generator.AddSimpleTone(note.Frequency, note.Duration);
-            generator.Save();        
+            generator.Save();
             fileStream.Position = 0;
             string dataUrl = string.Format("data:audio/wav;base64,{0}", Convert.ToBase64String(fileStream.ToArray()));
-            return dataUrl;  
+            return dataUrl;
         }
         public static void Config(uint samplerate, BitDepth bitness, ushort channels, int lengthLimit)
         {
@@ -52,11 +50,10 @@ namespace WebMelody
             MelodyGeneration.Channels = channels;
             MelodyGeneration.LengthLimit = lengthLimit;
         }
-
         public static IEnumerable<Piece> ReadExamples(HttpApplication webapp)
         {
             string pathToList = webapp.Server.MapPath("~/App_Data/tunes.xml");
-            XDocument examples = null;      
+            XDocument examples = null;
             try
             {
                examples = XDocument.Load(pathToList);
@@ -65,14 +62,14 @@ namespace WebMelody
             {
                 return null;
             }
-            var pieces = examples.Root.Descendants("piece");         
+            var pieces = examples.Root.Descendants("piece");
             return pieces.Select(piece => new Piece()
-            { 
+            {
                 Title = piece.Attribute("name").Value,
                 Text = piece.Value
             });
         }
-    } 
+    }
     public enum GenerationError
     {
         IncorrectNotation,

@@ -2,8 +2,8 @@
 var AJAXEvents = {
     MelodyDiv: '#generatedMelody',
     Failure: function () {
-        $(AJAXEvents.MelodyDiv).html('<p>Во время генерации произошла ошибка.</p>');     
-        $(AJAXEvents.MelodyDiv).show();     
+        $(AJAXEvents.MelodyDiv).html('<p>Во время генерации произошла ошибка.</p>');
+        $(AJAXEvents.MelodyDiv).show();
     },
     Complete: function () {
         $('#submitButton').attr('disabled', false);
@@ -11,14 +11,14 @@ var AJAXEvents = {
     Success: function () {
         var close = document.createElement("span");
         close.innerHTML = "Закрыть";
-        close.style.backgroundColor = "white";
+        
         close.style.position = "absolute";
         close.style.right = "0";
         close.style.top = "0";
         close.style.cursor = "pointer";
         close.id = "close"
         close.addEventListener("click", AJAXEvents.CloseGeneratedMelody);
-        generatedMelody.appendChild(close);        
+        generatedMelody.appendChild(close);
     },
     Begin: function () {
         var p = document.getElementById("player");
@@ -45,13 +45,14 @@ var AJAXEvents = {
 
 $(document).ready(function () {
     $('#examples').remove();
-    $('#examplesJS').attr('id', 'examples');
-    $("#rulesLink").attr("href", "#");
+    $('#examplesJS').attr('id', 'examples');   
     $(".exampleLink").on("click", function () {
         $("#melodyTextarea").val($(this).data("melody"));
+        return false;
     });
-    $("#rulesLink").on("click", function () {
+    $("#ruleLink").on("click", function () {
         $("#rules").toggle();
+        return false;
     });
     $("#rules").hide();
     $('#jsEnabled').attr('value', 'true');

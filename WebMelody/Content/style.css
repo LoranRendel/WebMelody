@@ -1,7 +1,12 @@
-html, body {
+html {
+    font-size: 14pt;
+    min-height: 100vh;   
+    font-family: 'PT Sans', sans-serif;   
+}
+body {
 	margin: 0;
-	padding: 0;			
-	font-family: 'PT Sans', sans-serif;
+	padding: 0; 
+    min-height: inherit;   
 }
 #background {
 	background-image: url("./images/back.jpg");
@@ -9,50 +14,61 @@ html, body {
 	background-repeat: no-repeat;
 	position: fixed;
 	top: 0;
-	z-index: -1;
-	width: 100%;
-	height: 100%;
+    left: 0;
+	z-index: -1;	
+	height: 100vh;
+    width: 100%;
 }
-#page {			
-	max-width: 550px;		
-	margin: 0 auto;			
-	padding: 2em;
-}		
+#page {	
+    position: relative;		
+	max-width: 550px;	
+    min-height: inherit;	
+	margin: 0 auto -5em auto;   
+	padding: 0 2em;    
+}	
+#page:before {
+    content: ' ';
+    display: table;
+}	
 #melodyTextarea {
 	display: block;			
 	width: 95%;
 	min-height: 200px;			
 	resize: vertical;
-	background-color: #ddd6ba;
-	border-color: #d2cbb1;
+	background-color: #ddd6ba;	
 	border-width: 0;
 	box-shadow: -1px 9px 41px -2px rgba(0,0,0,0.75);
 	overflow: auto;
-	margin: 0 auto;
+	margin: 1em auto;
     border-radius: 10px;
-    padding: 10px;
+    padding: 10px;    
+    font-size: inherit;
 }
 #submitButton {
 	display: block;
 	width: 60%;
     height: 3em;
-	margin: 0 auto;
-	margin-top: 1em;
+	margin: 1em auto;	
     border-radius: 10px;
     background-color: #ddd6ba;
     border: none;
     box-shadow: -1px 9px 41px -2px rgba(0,0,0,0.75);
-    cursor: pointer;
-	border-color: #d2cbb1;
-    font-family: 'PT Sans';
-    text-wrap:normal;
-    white-space:normal;
+    cursor: pointer;	
+    font-family: inherit;    
+    font-size: inherit;
 }
-#generatedMelody {
-	width: 100%;
-	margin: 3em auto 3em auto;
-	background-color: #ddd6ba;
-	border-color: #d2cbb1;
+#submitButton:hover {
+    color: #b26a0c;
+}
+#submitButton:disabled {
+   color: gray;
+}
+#submitButton:hover:disabled {
+   color: gray;
+}
+#generatedMelody {	
+	margin: 1em auto;
+	background-color: #ddd6ba;	
 	box-shadow: -1px 9px 41px -2px rgba(0,0,0,0.75);
 	padding-top: 1em;
 	padding-bottom: 1em;
@@ -75,31 +91,44 @@ html, body {
 	background-color:  #ddd6ba;
     border-radius: 5px;
 }
-em {
-	font-size: 14pt;
-}
 .rule-imgs {
     width: 90%;
 }
-#examples {
-	width: 100%;
-	background-color: #ddd6ba;
-	border-color: #d2cbb1;
+#examples {	
+	background-color: #ddd6ba;	
 	box-shadow: -1px 9px 41px -2px rgba(0,0,0,0.75);
 	padding-top: 1em;
 	padding-bottom: 1em;
     border-radius: 10px;
+    margin-top: 2em;
+    margin-bottom: 1em;
 }
-#examples p, ul {
+#examples p, #examples ul {
 	margin: 0 1em;
 	line-height: 1.5;
 }
+#rules p {
+    margin: 1em;
+}
 .warning {
+    margin: 1em 0;
 	text-align: center;
 }
-.exampleLink {
+a {
     text-decoration: none;
-    border-bottom: 1px dashed; 
+    color: #493d07; 
+    border-bottom: 1px solid #57523d; 
+}
+a:visited {
+    color: #493d07; 
+    border-bottom: 1px solid #57523d; 
+}
+a:hover {
+    color: #b26a0c;
+    border-bottom: 1px solid #b29a7c;
+}
+.jsLink, .jsLink:visited, .jsLink:hover {
+     border-bottom-style: dashed;
 }
 ul#samples {
       list-style-image: url('./images/music-note.png');
@@ -108,34 +137,30 @@ input.link-button {
     background: none;
     border: none;
     padding: 0;
-    text-decoration: underline;
-    cursor: pointer;
-    color: blue;
+    text-decoration: none;    
+    cursor: pointer;    
+    font-size: 14pt;
+    font-family: 'PT Sans', sans-serif;
+    color: #493d07; 
+    border-bottom: 1px solid #57523d; 
+}
+input.link-button:hover {
+    color: #b26a0c;
+    border-bottom: 1px solid #b29a7c;
 }
 input.link-button:focus:active {
 	padding: 0;
 }
-.email {
+#email { 
+    width: 100%;   
+    line-height: 3em;
     text-align: center;
-}
-#close {
-    border-radius: 10px;    
-}
-@media (max-width: 960px) and (orientation: portrait) {
-	#page {
-        max-width: 95%; 
-        padding: 0.5em 0;       
-	}
-    #submitButton {
-        height: 3.5em;
-        font-size: 2em;
-    }
-    #examples {
-        font-size: 1.5em;
-    }    
-    #submitButton {
-        margin-top: 1em;
-    }
+    height: 3em;
+    margin: 0;
+    margin-top: 2em;
+    z-index: 10;
+    display: block;
+    position: relative;    
 }
 .code {
     font-family: monospace;
@@ -144,10 +169,26 @@ input.link-button:focus:active {
     padding-left: 1em;
     padding-right: 1em;  
 }
-#rulesLink {
-      text-decoration: none;
-    border-bottom: 1px dashed; 
-}
 #examplesJS {
     display:none;
+}
+#clear {
+    height: 5em;
+}
+#close {
+    border-radius: 10px;
+    background-color: #CFC5A1;  
+}
+
+@media (max-width: 960px) and (orientation: portrait) {
+	html {
+        font-size: 18pt;
+	}
+    #page {
+        max-width: 95%; 
+        padding: 0 0.5em;   
+	}
+    #examples {
+        margin-top: 0.5em;
+    }        
 }
