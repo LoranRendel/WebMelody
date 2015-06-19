@@ -43,6 +43,37 @@ var AJAXEvents = {
     }
 }
 
+var RuleLinkIndicator = {
+    originalText: $('#ruleLink').html(),
+    opened: false,
+    handleElement: null,
+    showOpenHandle: function () {
+        if (this.handleElement)
+        {
+            this.handleElement.remove();
+            this.handleElement = null;
+        }
+        $('#ruleLink').parent().append('<span id="ruleHandle"> +</span>');
+        this.handleElement = $('#ruleHandle');
+        this.opened = false;
+    },
+    showCloseHandle: function () {
+        if (this.handleElement) {
+            this.handleElement.remove();
+            this.handleElement = null;
+        }
+        $('#ruleLink').parent().append('<span id="ruleHandle"> −</span>');
+        this.handleElement = $('#ruleHandle');
+        this.opened = true;
+    },
+    toggle: function () {
+        if (this.opened)
+            this.showOpenHandle();
+        else
+            this.showCloseHandle();
+    }
+}
+
 $(document).ready(function () {
     $('#examples').remove();
     $('#examplesJS').attr('id', 'examples');   
@@ -50,10 +81,12 @@ $(document).ready(function () {
         $("#melodyTextarea").val($(this).data("melody"));
         return false;
     });
+    RuleLinkIndicator.showOpenHandle();
     $("#ruleLink").on("click", function () {
         $("#rules").toggle();
+        RuleLinkIndicator.toggle();
         return false;
     });
-    $("#rules").hide();
+    $("#rules").hide();   
     $('#jsEnabled').attr('value', 'true');
 });
