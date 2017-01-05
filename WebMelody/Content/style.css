@@ -192,3 +192,8 @@ input.link-button:focus:active {
         margin-top: 0.5em;
     }        
 }
+@media (max-width: 600px) and (orientation: portrait) {
+	html {
+        font-size: 12pt;
+	}     
+}

@@ -8,7 +8,7 @@
     <meta name="description" content="Простой генератор мелодий, записанных при помощи упрощённой нотной записи.">
     <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
     <link href='//fonts.googleapis.com/css?family=PT+Sans&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-    <script>
+    @*<script>
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
             (i[r].q = i[r].q || []).push(arguments)
@@ -18,16 +18,16 @@
 
     ga('create', 'UA-62809723-1', 'auto');
     ga('send', 'pageview');
-    </script>
+    </script>*@
 </head>
 <body>
     <div id="background"></div>
-    <div id="page">
+    <div id="page">       
         @RenderSection("Examples", false)
         @RenderBody()
         <div id="clear"></div>
     </div>  
-    <p id="email"><span class="highlight">Пишите: <a href="mailto:guestbook@melody.toumin.co.uk">guestbook@melody.toumin.co.uk</a></span></p>  
+    @*<p id="email"><span class="highlight">Пишите: <a href="mailto:*">guestbook@melody.toumin.co.uk</a></span></p>*@  
    @Scripts.Render("~/bundles/jquery")
    @RenderSection("Scripts", false) 
 </body>

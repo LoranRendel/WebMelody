@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Optimization;
 using WaveGenerator;
-using Melody;
+
 namespace WebMelody
 {
     public class MvcApplication : System.Web.HttpApplication

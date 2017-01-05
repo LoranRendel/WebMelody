@@ -37,7 +37,7 @@ var AJAXEvents = {
     ShowLoadingIndicator: function () {
         var melodyDiv = $(AJAXEvents.MelodyDiv);
         melodyDiv.children().remove();
-        melodyDiv.append('<p class="indicator"><img src="/Content/images/loading.gif" /></p>');
+        melodyDiv.append('<p class="indicator"><img src="./Content/images/loading.gif" /></p>');
         melodyDiv.append('<p class="indicator">Разучиваю</p>');
         melodyDiv.show();
     }

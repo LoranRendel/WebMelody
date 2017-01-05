@@ -10,7 +10,7 @@ namespace WebMelody.Models
     {
         public DbSet<Piece> Pieces {get;set;}
 
-        public MelodyDB():base("MelodyDB")
+        public MelodyDB(string connectionStringName):base(connectionStringName)
         {
 
         }

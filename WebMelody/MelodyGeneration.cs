@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using System.Web;
-using Melody;
+using Simue;
 using WaveGenerator;
 using System.IO;
 using System.Text;
+
 using System.Xml;
 namespace WebMelody
 {
@@ -18,23 +19,25 @@ namespace WebMelody
         static int LengthLimit = 1000;
         public static string Generate(string melody)
         {
-            MemoryStream fileStream = new MemoryStream();
-            WaveFile melodyFile = new WaveFile(Samplerate, Bitness, Channels, fileStream);
-            SoundGenerator generator = new SoundGenerator(melodyFile);
-            generator.Volume = 0.3;
-            NotationTranstalor.Song song = new NotationTranstalor.Song(string.Empty, string.Empty, melody);
-            if (song.Length > MelodyGeneration.LengthLimit)
-            {
-                var ex = new ArgumentException("The melody is too long.");
-                ex.Data.Add("Error", GenerationError.TooLong);
-                throw ex;
-            }
-            if (song == NotationTranstalor.Song.Empty)
+            SimueCompiler compiler = new SimueCompiler();
+            var result = compiler.Parse(compiler.Tokenize(melody));
+            if (result.Errors.Count != 0)
             {
                 var ex = new ArgumentException("Incorrect notation");
                 ex.Data.Add("Error", GenerationError.IncorrectNotation);
                 throw ex;
             }
+            if (result.Song.Length > MelodyGeneration.LengthLimit)
+            {
+                var ex = new ArgumentException("The melody is too long.");
+                ex.Data.Add("Error", GenerationError.TooLong);
+                throw ex;
+            }
+            MemoryStream fileStream = new MemoryStream();
+            WaveFile melodyFile = new WaveFile(Samplerate, Bitness, Channels, fileStream);
+            SoundGenerator generator = new SoundGenerator(melodyFile);
+            generator.Volume = 0.3;
+            Song song = result.Song;
             //Generation
             foreach(var note in song.Notes)
                 generator.AddSimpleTone(note.Frequency, note.Duration);
@@ -50,13 +53,12 @@ namespace WebMelody
             MelodyGeneration.Channels = channels;
             MelodyGeneration.LengthLimit = lengthLimit;
         }
-        public static IEnumerable<Piece> ReadExamples(HttpApplication webapp)
-        {
-            string pathToList = webapp.Server.MapPath("~/App_Data/tunes.xml");
+        public static IEnumerable<Piece> ReadExamples(string pathToExampleFile)
+        {           
             XDocument examples = null;
             try
             {
-               examples = XDocument.Load(pathToList);
+               examples = XDocument.Load(pathToExampleFile);
             }
             catch
             {
@@ -65,7 +67,7 @@ namespace WebMelody
             var pieces = examples.Root.Descendants("piece");
             return pieces.Select(piece => new Piece()
             {
-                Title = piece.Attribute("name").Value,
+                Title = piece.Attribute("name")?.Value,
                 Text = piece.Value
             });
         }
