@@ -41,7 +41,7 @@
         UpdateTargetId = "generatedMelody",
         OnBegin = "AJAXEvents.Begin",
         OnComplete = "AJAXEvents.Complete"   
-    }, new { id = "melodyForm" }))
+    }, new { id = "melodyForm", spellcheck=false }))
     {
         <p class="warning"><em><span class="highlight">Продолжительность мелодии не должна превышать 2 минуты.</span></em></p>
         <textarea id="melodyTextarea" name="melody"></textarea>
