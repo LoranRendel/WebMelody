@@ -1,0 +1,37 @@
+﻿@using WebMelodyCore.Models 
+@model NonJSGenerateMelody
+@{    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Examples {
+<div id="examples">
+    <p>Репертуар:</p>
+    <ul id="samples">
+        @foreach (var piece in Model.Examples)
+        {            
+            <li>
+                <form action="~/Music/GenerateMelody" method="post">
+                    <input type="hidden" name="melody" value="@piece.Text"/>
+                    <input type="hidden" name="jsEnabled" id="jsEnabled" value="false" />
+                    <input class="link-button" type="submit" value="@piece.Title" />
+                </form>
+            </li>
+        }        
+    </ul>
+    <p><a href="~/Music/Rules">Правила синтаксиса нотной записи.</a></p>
+</div>
+}
+<form action="/Music/GenerateMelody" data-ajax="true" data-ajax-begin="AJAXEvents.Begin" data-ajax-complete="AJAXEvents.Complete" data-ajax-failure="AJAXEvents.Failure" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-success="AJAXEvents.Success" data-ajax-update="#generatedMelody" id="melodyForm" method="post" spellcheck="False">
+    <p class="warning"><em><span class="highlight">Продолжительность мелодии не должна превышать 2 минуты.</span></em></p>
+    <textarea id="melodyTextarea" name="melody"></textarea>
+    <input type="hidden" name="jsEnabled" id="jsEnabled" value="false" />
+    <input id="submitButton" type="submit" value="Сыграть">
+</form>
+<div id="generatedMelody" style="display: block;">
+    <p>Ваша мелодия:</p>
+    <audio id="player" controls>
+        <source src="@Model.DataUrl" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+</div>
+

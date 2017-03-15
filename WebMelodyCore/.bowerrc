@@ -1,0 +1,4 @@
+{
+  "directory": "lib",
+  "proxy": "http://linux.lexlex.tech:3128"
+}

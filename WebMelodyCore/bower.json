@@ -1,0 +1,26 @@
+{
+  "name": "web-melody-core",
+  "install": {
+    "path": "wwwroot/Content/scripts"
+  },
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "jquery-ajax-unobtrusive": "^3.2.4"
+  },
+  "authors": [
+    "A. Handless <algorithmpit@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ]
+}
